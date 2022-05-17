@@ -11,6 +11,8 @@ import android.view.View;
 
 import com.shekhawat.wwchat.databinding.ActivityMainBinding;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
              //       mInterstitialAd.show(DashboardActivity.this);
             //    else {
             //        loadAd();
+
                     Intent inte = new Intent(MainActivity.this, WebViewActivity.class);
                     inte.putExtra("url", "https://sites.google.com/view/ww-chat/home");
                     startActivity(inte);
@@ -58,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     private void sendMessage(){
 
         String phoneNumberWithCountryCode = binding.ccp.getSelectedCountryCodeWithPlus()
-                + binding.txtNumber.getText().toString();
+                + Objects.requireNonNull(binding.txtNumber.getText()).toString();
         String message = "Hello";
         startActivity(
                 new Intent(Intent.ACTION_VIEW,
